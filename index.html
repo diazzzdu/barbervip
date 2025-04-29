@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Vip - Estilo e Sofisticação</title>
+    <link rel="icon" href="aba.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#e63946',
+                        secondary: '#1e1e1e',
+                        dark: '#121212',
+                        light: '#f0f0f0',
+                        accent: '#3a86ff'
+                    },
+                    fontFamily: {
+                        heading: ['Oswald', 'sans-serif'],
+                        body: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles */
+        .cut-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cut-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .time-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .time-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .unavailable {
+            opacity: 0.5;
+            pointer-events: none;
+            background-color: #6b7280 !important;
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(18, 18, 18, 0.9);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1585747860715-ebba7bca9fe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .admin-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .team-member-img {
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .whatsapp-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-dark text-light font-body">
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 py-4 px-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="LOGO (1).png" alt="Barber Vip Logo" class="h-12">
+                <span class="text-xl font-bold font-heading hidden md:block">BARBER VIP</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-primary transition">Início</a>
+                <a href="#services" class="hover:text-primary transition">Serviços</a>
+                <a href="#team" class="hover:text-primary transition">Equipe</a>
+                <a href="#contact" class="hover:text-primary transition">Contato</a>
+            </div>
+            <button id="admin-btn" onclick="adminLogin()" class="bg-primary hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold transition">
+                Área Admin
+            </button>
+            <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary mt-4 py-2 rounded-lg">
+            <a href="#home" class="block px-4 py-2 hover:bg-gray-800">Início</a>
+            <a href="#services" class="block px-4 py-2 hover:bg-gray-800">Serviços</a>
+            <a href="#team" class="block px-4 py-2 hover:bg-gray-800">Equipe</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-gray-800">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero pt-32 pb-20 px-6 text-center">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-bold font-heading mb-6">
+                <span class="text-primary">BARBER</span> VIP
+            </h1>
+            <p class="text-xl md:text-2xl mb-8">
+                Estilo, precisão e sofisticação para o homem moderno
+            </p>
+            <a href="#services" class="bg-primary hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full text-lg inline-block transition">
+                Agendar Horário
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-6 bg-secondary">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold font-heading mb-12 text-center">
+                Nossos <span class="text-primary">Serviços</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-primary text-5xl mb-4">✂️</div>
+                    <h3 class="text-2xl font-bold mb-3">Corte Clássico</h3>
+                    <p class="text-gray-300">Corte tradicional com técnicas modernas para um visual impecável.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-primary text-5xl mb-4">🧔</div>
+                    <h3 class="text-2xl font-bold mb-3">Barba Premium</h3>
+                    <p class="text-gray-300">Modelagem e tratamento completo para sua barba.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-primary text-5xl mb-4">💈</div>
+                    <h3 class="text-2xl font-bold mb-3">Pacote VIP</h3>
+                    <p class="text-gray-300">Corte + barba + tratamento capilar para uma experiência completa.</p>
+                </div>
+            </div>
+            
+            <h2 class="text-4xl font-bold font-heading mb-12 text-center">
+                Agende Seu <span class="text-primary">Horário</span>
+            </h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">
+                Escolha seu barbeiro e o horário desejado para agendar diretamente pelo WhatsApp.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Erivelton -->
+                <div class="cut-card bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold mr-4">E</div>
+                        <h3 class="text-2xl font-bold">Erivelton</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button id="ct-09" onclick="scheduleAppointment('Erivelton', '09:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">09:00</button>
+                        <button id="ct-10" onclick="scheduleAppointment('Erivelton', '10:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">10:00</button>
+                        <button id="ct-11" onclick="scheduleAppointment('Erivelton', '11:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">11:00</button>
+                        <button id="ct-14" onclick="scheduleAppointment('Erivelton', '14:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">14:00</button>
+                        <button id="ct-15" onclick="scheduleAppointment('Erivelton', '15:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">15:00</button>
+                        <button id="ct-16" onclick="scheduleAppointment('Erivelton', '16:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">16:00</button>
+                        <button id="ct-17" onclick="scheduleAppointment('Erivelton', '17:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">17:00</button>
+                        <button id="ct-18" onclick="scheduleAppointment('Erivelton', '18:00')" class="time-btn bg-primary hover:bg-red-600 text-white py-2 px-3 rounded">18:00</button>
+                    </div>
+                </div>
+                
+                <!-- Alisson -->
+                <div class="cut-card bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-2xl font-bold mr-4">A</div>
+                        <h3 class="text-2xl font-bold">Alisson</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button id="cm-09" onclick="scheduleAppointment('Alisson', '09:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">09:00</button>
+                        <button id="cm-10" onclick="scheduleAppointment('Alisson', '10:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">10:00</button>
+                        <button id="cm-11" onclick="scheduleAppointment('Alisson', '11:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">11:00</button>
+                        <button id="cm-14" onclick="scheduleAppointment('Alisson', '14:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">14:00</button>
+                        <button id="cm-15" onclick="scheduleAppointment('Alisson', '15:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">15:00</button>
+                        <button id="cm-16" onclick="scheduleAppointment('Alisson', '16:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">16:00</button>
+                        <button id="cm-17" onclick="scheduleAppointment('Alisson', '17:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">17:00</button>
+                        <button id="cm-18" onclick="scheduleAppointment('Alisson', '18:00')" class="time-btn bg-accent hover:bg-blue-500 text-white py-2 px-3 rounded">18:00</button>
+                    </div>
+                </div>
+                
+                <!-- Wiliam -->
+                <div class="cut-card bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold mr-4">W</div>
+                        <h3 class="text-2xl font-bold">Wiliam</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button id="ce-09" onclick="scheduleAppointment('Wiliam', '09:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">09:00</button>
+                        <button id="ce-10" onclick="scheduleAppointment('Wiliam', '10:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">10:00</button>
+                        <button id="ce-11" onclick="scheduleAppointment('Wiliam', '11:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">11:00</button>
+                        <button id="ce-14" onclick="scheduleAppointment('Wiliam', '14:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">14:00</button>
+                        <button id="ce-15" onclick="scheduleAppointment('Wiliam', '15:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">15:00</button>
+                        <button id="ce-16" onclick="scheduleAppointment('Wiliam', '16:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">16:00</button>
+                        <button id="ce-17" onclick="scheduleAppointment('Wiliam', '17:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">17:00</button>
+                        <button id="ce-18" onclick="scheduleAppointment('Wiliam', '18:00')" class="time-btn bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded">18:00</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-16 px-6 bg-dark">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold font-heading mb-12 text-center">
+                Nossa <span class="text-primary">Equipe</span>
+            </h2>
+            
+            <div class="flex flex-col items-center">
+                <div class="max-w-4xl bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <img src="equipe.jpg" alt="Equipe Barber Vip" class="team-member-img w-full h-auto rounded-lg mb-6">
+                    <h3 class="text-2xl font-bold mb-4">Profissionais Qualificados</h3>
+                    <p class="text-gray-300 mb-6">
+                        Nossa equipe é composta por barbeiros experientes e apaixonados por seu trabalho. 
+                        Cada profissional da Barber Vip passa por treinamentos constantes para oferecer 
+                        o melhor serviço com as técnicas mais modernas do mercado.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h4 class="font-bold text-primary mb-2">Erivelton</h4>
+                            <p class="text-sm">Especialista em cortes clássicos</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h4 class="font-bold text-accent mb-2">Alisson</h4>
+                            <p class="text-sm">Mestre dos cortes</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-500 mb-2">Wiliam</h4>
+                            <p class="text-sm">Especialista em design</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 bg-secondary">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold font-heading mb-12 text-center">
+                Entre em <span class="text-primary">Contato</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Informações</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-primary text-xl mr-4">📍</div>
+                            <div>
+                                <h4 class="font-bold">Endereço</h4>
+                                <p>Rua José Bonifácio, Quadra 18 Loja 01<br>Luziânia - Goiás</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-primary text-xl mr-4">📞</div>
+                            <div>
+                                <h4 class="font-bold">Telefone</h4>
+                                <p>(61) 99331-4571</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-primary text-xl mr-4">⏰</div>
+                            <div>
+                                <h4 class="font-bold">Horário de Funcionamento</h4>
+                                <p>Segunda a Sábado: 09:00 - 19:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Fale Conosco</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Nome</label>
+                            <input type="text" id="name" class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email" class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary hover:bg-red-600 text-white font-bold py-2 px-6 rounded transition">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="https://api.whatsapp.com/send?phone=5561993314571" class="whatsapp-btn inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-lg transition">
+                    <span class="mr-2">💬</span> Fale pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="admin-panel container mx-auto my-12 bg-gray-800 p-8 rounded-xl shadow-lg">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold font-heading">
+                Painel <span class="text-primary">Administrativo</span>
+            </h2>
+            <button onclick="closeAdminPanel()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition">
+                Fechar
+            </button>
+        </div>
+        
+        <!-- Erivelton -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-lg font-bold mr-4">E</div>
+                Erivelton
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>09:00</span>
+                    <button onclick="toggleAvailability('ct-09')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>10:00</span>
+                    <button onclick="toggleAvailability('ct-10')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>11:00</span>
+                    <button onclick="toggleAvailability('ct-11')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>14:00</span>
+                    <button onclick="toggleAvailability('ct-14')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>15:00</span>
+                    <button onclick="toggleAvailability('ct-15')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>16:00</span>
+                    <button onclick="toggleAvailability('ct-16')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>17:00</span>
+                    <button onclick="toggleAvailability('ct-17')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>18:00</span>
+                    <button onclick="toggleAvailability('ct-18')" class="toggle-btn bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alisson -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-lg font-bold mr-4">A</div>
+                Alisson
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>09:00</span>
+                    <button onclick="toggleAvailability('cm-09')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>10:00</span>
+                    <button onclick="toggleAvailability('cm-10')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>11:00</span>
+                    <button onclick="toggleAvailability('cm-11')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>14:00</span>
+                    <button onclick="toggleAvailability('cm-14')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>15:00</span>
+                    <button onclick="toggleAvailability('cm-15')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>16:00</span>
+                    <button onclick="toggleAvailability('cm-16')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>17:00</span>
+                    <button onclick="toggleAvailability('cm-17')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>18:00</span>
+                    <button onclick="toggleAvailability('cm-18')" class="toggle-btn bg-accent hover:bg-blue-500 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wiliam -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-lg font-bold mr-4">W</div>
+                Wiliam
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>09:00</span>
+                    <button onclick="toggleAvailability('ce-09')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>10:00</span>
+                    <button onclick="toggleAvailability('ce-10')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>11:00</span>
+                    <button onclick="toggleAvailability('ce-11')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>14:00</span>
+                    <button onclick="toggleAvailability('ce-14')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>15:00</span>
+                    <button onclick="toggleAvailability('ce-15')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>16:00</span>
+                    <button onclick="toggleAvailability('ce-16')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>17:00</span>
+                    <button onclick="toggleAvailability('ce-17')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+                <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                    <span>18:00</span>
+                    <button onclick="toggleAvailability('ce-18')" class="toggle-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition">
+                        Alternar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 px-6 text-center">
+        <div class="container mx-auto">
+            <div class="flex justify-center mb-6">
+                <img src="LOGO (1).png" alt="Barber Vip Logo" class="h-12">
+            </div>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.instagram.com/barbervipbarbearia" class="text-gray-400 hover:text-primary transition">Instagram</a>
+                <a href="https://wa.me/5561993264958" class="text-gray-400 hover:text-primary transition">WhatsApp</a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                &copy; 2025 Barber Vip. Todos os direitos reservados. Made by @diazzzdu
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Admin functionality
+        let isAdmin = false;
+        const adminPassword = "Barber061";
+        
+        // Barbers' WhatsApp numbers
+        const barberPhones = {
+            "Erivelton": "5561993264958",
+            "Alisson": "5561982577913",
+            "Wiliam": "5561991011175"
+        };
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Admin login
+        function adminLogin() {
+            const password = prompt("Digite a senha do administrador:");
+            
+            if (password === adminPassword) {
+                isAdmin = true;
+                document.getElementById('admin-panel').style.display = 'block';
+                // Load saved availability status
+                loadAvailability();
+            } else if (password !== null) {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        // Close admin panel
+        function closeAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+        
+        // Toggle time slot availability
+        function toggleAvailability(id) {
+            const element = document.getElementById(id);
+            const key = id;
+            
+            if (element.classList.contains('unavailable')) {
+                element.classList.remove('unavailable');
+                localStorage.removeItem(key);
+            } else {
+                element.classList.add('unavailable');
+                localStorage.setItem(key, 'unavailable');
+            }
+        }
+        
+        // Load saved availability status
+        function loadAvailability() {
+            const timeSlots = [
+                'ct-09', 'ct-10', 'ct-11', 'ct-14', 'ct-15', 'ct-16', 'ct-17', 'ct-18',
+                'cm-09', 'cm-10', 'cm-11', 'cm-14', 'cm-15', 'cm-16', 'cm-17', 'cm-18',
+                'ce-09', 'ce-10', 'ce-11', 'ce-14', 'ce-15', 'ce-16', 'ce-17', 'ce-18'
+            ];
+            
+            timeSlots.forEach(slot => {
+                if (localStorage.getItem(slot) === 'unavailable') {
+                    document.getElementById(slot).classList.add('unavailable');
+                }
+            });
+        }
+        
+        // Schedule appointment
+        function scheduleAppointment(barber, time) {
+            const name = prompt(`Agendamento com ${barber} às ${time}\nQual é o seu nome?`);
+            
+            if (name) {
+                const barberPhone = barberPhones[barber];
+                const message = encodeURIComponent(`Olá ${barber}, meu nome é ${name}. Gostaria de agendar um horário para corte de cabelo às ${time}. Está disponível?`);
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${barberPhone}&text=${message}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+        
+        // Initialize - load availability when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAvailability();
+        });
+    </script>
+</body>
+</html>
